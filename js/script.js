@@ -25,15 +25,27 @@ shoppingCartButton.onclick = (e) => {
 
 // Klik di luar elemen untuk menutup nav, search, dan cart
 document.addEventListener("click", function (e) {
+  // Navbar
   if (!navbarNav.contains(e.target) && !hamburgerMenu.contains(e.target)) {
     navbarNav.classList.remove("active");
   }
+
+  // Search
   if (!searchForm.contains(e.target) && !searchButton.contains(e.target)) {
     searchForm.classList.remove("active");
   }
+
+  // Shopping Cart
+  const isInsideCart =
+    shoppingCart.contains(e.target) ||
+    e.target.closest(".increase-qty") ||
+    e.target.closest(".decrease-qty") ||
+    e.target.closest(".remove-item");
+
   if (
     !shoppingCart.contains(e.target) &&
-    !shoppingCartButton.contains(e.target)
+    !shoppingCartButton.contains(e.target) &&
+    !isInsideCart
   ) {
     shoppingCart.classList.remove("active");
   }
@@ -67,21 +79,39 @@ document.querySelectorAll(".add-to-cart").forEach((button) => {
 
 function displayCart() {
   const cartList = document.querySelector("#cart-items");
+  const checkoutBtn = document.querySelector("#checkout-whatsapp");
   if (!cartList) return;
 
   cartList.innerHTML = "";
-  let total = 0;
 
+  // Jika keranjang kosong
+  if (cartItems.length === 0) {
+    cartList.innerHTML = `
+      <div class="cart-empty">
+        <p>Keranjang masih kosong.</p>
+        <a href="#menu" class="btn go-shop">Lihat Menu</a>
+      </div>
+    `;
+    // Sembunyikan tombol checkout saat kosong
+    if (checkoutBtn) checkoutBtn.style.display = "none";
+    return;
+  } else {
+    if (checkoutBtn) checkoutBtn.style.display = "block";
+  }
+
+  // Tampilkan isi keranjang
   cartItems.forEach((item, index) => {
-    const itemTotal = item.price * item.qty;
-    total += itemTotal;
-
     const div = document.createElement("div");
     div.classList.add("cart-item");
     div.innerHTML = `
       <img src="img/menu/1.jpg" alt="${item.name}" />
       <div class="item-detail">
         <h3>${item.name}</h3>
+        <div class="item-qty-control">
+          <button class="decrease-qty" data-index="${index}">−</button>
+          <span>${item.qty}</span>
+          <button class="increase-qty" data-index="${index}">+</button>
+        </div>
         <div class="item-price">Rp ${item.price.toLocaleString()} x ${
       item.qty
     }</div>
@@ -91,17 +121,34 @@ function displayCart() {
     cartList.appendChild(div);
   });
 
-  // Tambahkan total harga ke cart
-  const totalDiv = document.createElement("div");
-  totalDiv.classList.add("cart-total");
-  totalDiv.innerHTML = `<hr><h3>Total: Rp ${total.toLocaleString()}</h3>`;
-  cartList.appendChild(totalDiv);
-
-  // Pasang ulang feather icon & event hapus
   feather.replace();
-  document.querySelectorAll(".remove-item").forEach((icon) => {
-    icon.addEventListener("click", () => {
-      const index = icon.dataset.index;
+
+  // Tambah qty
+  document.querySelectorAll(".increase-qty").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const index = btn.dataset.index;
+      cartItems[index].qty += 1;
+      displayCart();
+    });
+  });
+
+  // Kurangi qty
+  document.querySelectorAll(".decrease-qty").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const index = btn.dataset.index;
+      if (cartItems[index].qty > 1) {
+        cartItems[index].qty -= 1;
+      } else {
+        cartItems.splice(index, 1);
+      }
+      displayCart();
+    });
+  });
+
+  // Hapus item
+  document.querySelectorAll(".remove-item").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const index = btn.dataset.index;
       cartItems.splice(index, 1);
       displayCart();
     });
@@ -159,3 +206,6 @@ if (contactForm) {
 
 // Feather icons init
 feather.replace();
+
+// Tampilkan isi keranjang saat pertama kali halaman dibuka
+displayCart();
