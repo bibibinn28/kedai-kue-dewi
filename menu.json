@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Onde - Onde",
+    "price": "IDR 2,5K",
+    "image": "img/menu/1.jpg",
+    "bestSeller": true
+  },
+  {
+    "name": "Lemper Ayam",
+    "price": "IDR 2,5K",
+    "image": "img/menu/2.jpg",
+    "bestSeller": true
+  },
+  {
+    "name": "Bakwan Udang",
+    "price": "IDR 3K",
+    "image": "img/menu/3.jpg",
+    "bestSeller": true
+  },
+  {
+    "name": "Donat",
+    "price": "IDR 3,5K",
+    "image": "img/menu/4.jpg",
+    "bestSeller": true
+  },
+  {
+    "name": "Kue Lumpur",
+    "price": "IDR 3,5K",
+    "image": "img/menu/5.jpg",
+    "bestSeller": true
+  },
+  {
+    "name": "Kue Gula Merah",
+    "price": "IDR 3K",
+    "image": "img/menu/6.jpg",
+    "bestSeller": true
+  },
+  {
+    "name": "Pie Susu / Coklat",
+    "price": "IDR 3K",
+    "image": "img/menu/7.jpg",
+    "bestSeller": true
+  },
+  {
+    "name": "Kue Soes",
+    "price": "IDR 5K",
+    "image": "img/menu/8.jpg",
+    "bestSeller": true
+  },
+  {
+    "name": "Kue Putu Ayu",
+    "price": "IDR 3K",
+    "image": "img/menu/9.jpg",
+    "bestSeller": true
+  },
+  {
+    "name": "Getuk Lindri",
+    "price": "IDR 3K",
+    "image": "img/menu/10.jpg",
+    "bestSeller": true
+  },
+  {
+    "name": "Pastel Sayur",
+    "price": "IDR 2,5K",
+    "image": "img/menu/11.jpg",
+    "bestSeller": true
+  },
+  {
+    "name": "Bacang Ayam",
+    "price": "IDR 5K",
+    "image": "img/menu/12.jpg",
+    "bestSeller": true
+  },
+  {
+    "name": "Arem - Arem Ayam",
+    "price": "IDR 3,5K",
+    "image": "img/menu/13.jpg",
+    "bestSeller": true
+  },
+  {
+    "name": "Nasi Rames",
+    "price": "IDR 12K",
+    "image": "img/menu/14.jpg",
+    "bestSeller": true
+  },
+  {
+    "name": "Nasi Kuning",
+    "price": "IDR 12K",
+    "image": "img/menu/15.jpg",
+    "bestSeller": true
+  }
+]

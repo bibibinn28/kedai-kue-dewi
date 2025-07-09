@@ -44,15 +44,20 @@
 
       <div class="navbar-extra">
         <a href="#" id="search-button"><i data-feather="search"></i></a>
-        <a href="#" id="shopping-cart-button"
-          ><i data-feather="shopping-cart"></i
-        ></a>
+        <a href="#" id="shopping-cart-button">
+          <i data-feather="shopping-cart"></i>
+          <span id="cart-count" class="cart-count-badge">0</span>
+        </a>
         <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
       </div>
 
       <!-- Search Form Start -->
       <div class="search-form">
-        <input type="search" id="search-box" placeholder="search here..." />
+        <input
+          type="search"
+          id="search-box"
+          placeholder="cari menu di sini..."
+        />
         <label for="search-box"><i data-feather="search"></i></label>
       </div>
       <!-- Search Form End -->
@@ -62,7 +67,7 @@
         <div id="cart-items">
           <!-- List item akan dimasukkan lewat JavaScript -->
         </div>
-        <button id="checkout-whatsapp" class="btn" style="margin-bottom: 2rem">
+        <button id="checkout-whatsapp" class="btn">
           <i data-feather="message-circle"></i> Lanjut ke WhatsApp
         </button>
       </div>
@@ -92,13 +97,18 @@
           <img src="img/tentangkami-bg.jpg" alt="Tentang Kami" />
         </div>
         <div class="content">
-          <h3>Kenapa memilih usaha kami?</h3>
+          <h3>Kenapa Memilih Kedai Kue Dewi?</h3>
           <p>
-            Kami hadir dengan semangat memberdayakan produk lokal, menyajikan
-            kue tradisional berkualitas dengan resep rumahan, dan pelayanan yang
-            tulus. Kedai Kue Dewi bukan hanya tempat belanja, tapi tempat
-            berbagi rasa dan cerita. Dengan memilih kami, Anda mendukung UMKM
-            Indonesia untuk terus tumbuh dan berkarya.
+            Kami bukan sekadar menjual kue — kami menyuguhkan rasa tradisional
+            yang sarat kenangan. Setiap produk dibuat dengan resep rumahan
+            turun-temurun, menggunakan bahan alami tanpa pengawet, dan diracik
+            oleh tangan-tangan penuh cinta dari pelaku UMKM lokal.
+          </p>
+          <p>
+            Kedai Kue Dewi hadir untuk memanjakan lidah dan menghadirkan suasana
+            hangat yang menyatukan keluarga dan cerita. Dengan membeli dari
+            kami, Anda ikut menjaga warisan kuliner Indonesia dan mendukung UMKM
+            agar terus tumbuh dan berkarya.
           </p>
         </div>
       </div>
@@ -108,27 +118,19 @@
     <!-- Menu Section Start -->
     <section id="menu" class="menu">
       <h2><span>Menu</span> Kami</h2>
-      <p>Berikut pilihan produk unggulan kami.</p>
-      <div class="row">
-        <div class="menu-card">
-          <img src="img/menu/1.jpg" alt="Onde-onde" class="menu-card-img" />
-          <h3 class="menu-card-title">- Onde - Onde -</h3>
-          <p class="menu-card-price">IDR 2,5K</p>
-          <button class="add-to-cart btn">Tambah</button>
-        </div>
-
-        <div class="menu-card">
-          <img src="img/menu/1.jpg" alt="Lemper Ayam" class="menu-card-img" />
-          <h3 class="menu-card-title">- Lemper Ayam -</h3>
-          <p class="menu-card-price">IDR 2,5k</p>
-          <button class="add-to-cart btn">Tambah</button>
-        </div>
-        <div class="menu-card">
-          <img src="img/menu/1.jpg" alt="Bakwan Udang" class="menu-card-img" />
-          <h3 class="menu-card-title">- Bakwan Udang -</h3>
-          <p class="menu-card-price">IDR 3K</p>
-          <button class="add-to-cart btn">Tambah</button>
-        </div>
+      <p>
+        Berikut adalah beberapa produk unggulan dari kami. Untuk daftar lengkap
+        menu atau pertanyaan lainnya, silakan hubungi kami melalui Contact
+        Section dibawah.
+      </p>
+      <div class="row" id="menu-list">
+        <!-- Akan diisi lewat JavaScript -->
+        <p
+          id="no-result"
+          style="text-align: center; display: none; margin-top: 1rem"
+        >
+          Menu tidak ditemukan.
+        </p>
       </div>
     </section>
     <!-- Menu Section End -->
@@ -136,7 +138,7 @@
     <!-- Contact Section Start -->
     <section id="contact" class="contact">
       <h2><span>Kontak</span> Kami</h2>
-      <p>Hubungi kami melalui formulir berikut atau WhatsApp.</p>
+      <p>Hubungi kami melalui formulir berikut untuk informasi lebih lanjut.</p>
       <div class="row">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126906.93358776315!2d106.89080428034843!3d-6.284533025863572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698c6900964f69%3A0xd00495351896398!2sBekasi%2C%20Kota%20Bks%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1751476263091!5m2!1sid!2sid"
@@ -152,12 +154,12 @@
             <input type="text" id="nama" placeholder="nama" required />
           </div>
           <div class="input-group">
-            <i data-feather="mail"></i>
-            <input type="email" id="email" placeholder="email" required />
-          </div>
-          <div class="input-group">
             <i data-feather="phone"></i>
             <input type="tel" id="nohp" placeholder="no hp" required />
+          </div>
+          <div class="input-group">
+            <i data-feather="mail"></i>
+            <input type="email" id="email" placeholder="email (opsional)" />
           </div>
           <button type="submit" class="btn">Kirim Pesan</button>
         </form>

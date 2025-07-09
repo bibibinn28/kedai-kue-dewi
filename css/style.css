@@ -120,21 +120,40 @@ body {
   color: var(--bg);
 }
 
-/* Shopping Cart */
+/* Shopping Cart Start */
 .shopping-cart {
   position: absolute;
   top: 100%;
   right: -100%;
-  height: 100vh;
+  max-height: calc(100vh - 5rem);
   width: 35rem;
-  padding: 0 1.5rem;
   background-color: #fff;
   color: var(--bg);
   transition: 0.3s linear;
+  padding: 1.5rem;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .shopping-cart.active {
   right: 0;
+}
+
+#cart-items {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 50px; /* biar nggak collapse */
+}
+
+#cart-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+#cart-items::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 10px;
 }
 
 .shopping-cart .cart-item {
@@ -199,18 +218,24 @@ body {
   text-align: center;
 }
 
-/* Tombol Checkout WhatsApp */
+/* Shopping Cart End */
+
+/* Cart Section Start */
 #checkout-whatsapp {
   background-color: #25d366;
   color: white;
   border: none;
-  padding: 0.9rem 1.5rem;
+  padding: 1rem 1.5rem;
   font-size: 1.1rem;
   border-radius: 12px;
   cursor: pointer;
   width: 100%;
   transition: background-color 0.3s ease, transform 0.2s ease;
   font-weight: bold;
+  display: block;
+  margin-top: 1rem; /* dari: auto */
+  margin-bottom: 0.5rem; /* kasih jarak bawah sedikit */
+  border-top: 1px solid #ccc; /* pemisah elegan */
 }
 
 #checkout-whatsapp:hover {
@@ -238,6 +263,30 @@ body {
   display: inline-block;
   text-decoration: none;
 }
+
+.cart-count-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: red;
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  display: none;
+}
+
+#shopping-cart-button {
+  position: relative;
+}
+
+#checkout-whatsapp:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Cart Section End */
 
 /* Hero Section */
 .hero {
@@ -348,8 +397,12 @@ body {
 .about .row .content p {
   margin-bottom: 0.8rem;
   font-size: 1.4rem;
-  font-weight: 100;
+  font-weight: 300;
   line-height: 1.6;
+}
+
+.about p + p {
+  margin-top: 2rem;
 }
 
 /* Menu Section */
@@ -360,9 +413,9 @@ body {
 .menu p,
 .contact p {
   text-align: center;
-  max-width: 30rem;
+  max-width: 60rem;
   margin: auto;
-  font-weight: 100;
+  font-weight: 400;
   line-height: 1.6;
 }
 
@@ -386,6 +439,25 @@ body {
 
 .menu .row .menu-card .menu-card-title {
   margin-top: 1rem auto 0.5rem;
+}
+
+.menu-card-img-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.best-seller-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: gold;
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 2;
 }
 
 /* Tombol Tambah Menu */
